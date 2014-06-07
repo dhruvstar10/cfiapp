@@ -1,0 +1,40 @@
+CloudDB configs
+------------------
+INSTANCE ID: cfiwebapp:events
+DB: MySQL 5.5
+DB details:
+	IP Address: 173.194.248.153
+	Username: root
+	Password: root123
+	DB name: cfi
+	Table used: events
+
+
+To connect to this mysql instance:
+1. Ensure that the client from where you are connecting is added under authorized IPs
+	Google developer console --> Cloud SQL --> Select instance --> Edit --> AUTHORIZED IP ADDRESSES
+2. Use below 
+	mysql -h 173.194.248.153 --user=root --password
+
+mysql> desc events;
++----------------+---------------+------+-----+---------+-------+
+| Field          | Type          | Null | Key | Default | Extra |
++----------------+---------------+------+-----+---------+-------+
+| id             | bigint(20)    | NO   |     | NULL    |       |
+| name           | varchar(1024) | NO   |     | NULL    |       |
+| date           | varchar(1024) | NO   |     | NULL    |       |
+| time           | varchar(1024) | NO   |     | NULL    |       |
+| venue          | varchar(1024) | NO   |     | NULL    |       |
+| max_attendees  | varchar(1024) | NO   |     | NULL    |       |
+| fb_event_id    | varchar(1024) | NO   |     | NULL    |       |
+| gplus_event_id | varchar(1024) | NO   |     | NULL    |       |
++----------------+---------------+------+-----+---------+-------+
+
+Using the python backend:
+--------------------------
+The Python Backend for Events DB supports the following three APIs
+1. Get all events data using HTTP GET /
+2. Get a specific event’s data using HTTP GET /GetEvent
+3. Insert an event using HTTP GET /createEvent?name=BirthdayParty?date=20141121?time=1120?venue=Cupertino?max_attendees=20?fb_event_id=3212?gplus_event_id=12343
+
+
